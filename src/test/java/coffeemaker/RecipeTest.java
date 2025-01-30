@@ -3,6 +3,7 @@ package coffeemaker;
 import static org.junit.jupiter.api.Assertions.*;
 
 import coffeemaker.domain.Recipe;
+import coffeemaker.exceptions.RecipeException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -61,5 +62,14 @@ public class RecipeTest {
     @DisplayName("Check Chocolate Amount")
     public void checkChocolateAmount() {
         assertTrue(CuT.getAmtChocolate() > -1, "Testing Recipe Chocolate Amount");
+    }
+
+    @Test
+    @DisplayName("Test Set Price")
+    public void testSetPrice() {
+        CuT.setPrice("1");
+        assertEquals(1, CuT.getPrice(), "Test Set Price to 1");
+        assertThrows(RecipeException.class, () -> CuT.setPrice("-1"));
+        assertThrows(RecipeException.class, () -> CuT.setPrice("test"));
     }
 }
