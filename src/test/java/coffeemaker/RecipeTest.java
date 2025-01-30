@@ -29,6 +29,12 @@ public class RecipeTest {
     }
 
     @Test
+    @DisplayName("Recipe Constructor Test")
+    public void recipeConstructorTest() {
+        assertNotNull(CuT, "Recipe should not be null");
+    }
+
+    @Test
     @DisplayName("Check Name")
     public void checkName() {
         assertNotNull(CuT.getName(), "Testing Recipe Name");
