@@ -87,4 +87,13 @@ public class RecipeTest {
         assertThrows(RecipeException.class, () -> CuT.setAmtCoffee("-20"));
         assertThrows(RecipeException.class, () -> CuT.setAmtCoffee("test"));
     }
+
+    @Test
+    @DisplayName("Test Set Milk Amount")
+    public void testSetMilkAmount() {
+        CuT.setAmtMilk("100");
+        assertEquals(100, CuT.getAmtMilk(), "Test Set Milk Amount to 100");
+        assertThrows(RecipeException.class, () -> CuT.setAmtMilk("-20"));
+        assertThrows(RecipeException.class, () -> CuT.setAmtMilk("test"));
+    }
 }
