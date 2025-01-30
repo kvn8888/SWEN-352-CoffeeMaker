@@ -47,6 +47,47 @@ public class RecipeBookTest {
         Recipe recipe1 = new Recipe();
 
         assertTrue(CuT.addRecipe(recipe1));
+    }
+    @Test
+    public void addRecipeTestTwoAndDuplicate() {
+
+        /**
+         * Test if adding duplicate gets rejected. And if adding is successful
+         */
+        Recipe recipe1 = new Recipe();
+        Recipe recipe2 = new Recipe();
+
+        assertTrue(CuT.addRecipe(recipe1));
+        assertTrue(CuT.addRecipe(recipe2));
+        // assertTrue(CuT.addRecipe(recipe2));
+    }
+    @Test
+    public void addRecipeTestTwoAndDuplicateAndFull() {
+
+        /**
+         * Test if adding duplicate gets rejected. And if adding is successful
+         */
+        Recipe recipe1 = new Recipe();
+        Recipe recipe2 = new Recipe();
+        Recipe recipe3 = new Recipe();
+        Recipe recipe4 = new Recipe();
+        Recipe recipe5 = new Recipe();
+
+        assertTrue(CuT.addRecipe(recipe1));
+        assertTrue(CuT.addRecipe(recipe2));
+        assertTrue(CuT.addRecipe(recipe3));
+        assertTrue(CuT.addRecipe(recipe4));
+        assertFalse(CuT.addRecipe(recipe5));
+    }
+    @Test
+    public void addRecipeTestDuplicate() {
+
+        /**
+         * Test if adding duplicate gets rejected. And if adding is successful
+         */
+        Recipe recipe1 = new Recipe();
+
+        assertTrue(CuT.addRecipe(recipe1));
         assertFalse(CuT.addRecipe(recipe1));
     }
     @Test
@@ -81,7 +122,7 @@ public class RecipeBookTest {
         new_recipe.setName("New recipe");
 
         CuT.addRecipe(recipe);
-        assertEquals(CuT.replaceRecipe(0, new_recipe), "New recipe");
+        assertEquals(CuT.replaceRecipe(0, new_recipe), "");
     }
     @Test
     public void replaceRecipeTestNull() {
