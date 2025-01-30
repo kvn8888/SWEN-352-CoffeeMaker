@@ -123,4 +123,10 @@ public class RecipeTest {
         assertThrows(RecipeException.class, () -> CuT.setAmtChocolate("-20"));
         assertThrows(RecipeException.class, () -> CuT.setAmtChocolate("test"));
     }
+
+    @Test
+    @DisplayName("Test toString")
+    public void testToString() {
+        assertNotNull(CuT.toString(), "Testing Recipe toString");
+    }
 }
