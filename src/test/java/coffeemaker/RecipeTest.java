@@ -41,6 +41,15 @@ public class RecipeTest {
     }
 
     @Test
+    @DisplayName("Test Set Name")
+    public void testSetName() {
+        CuT.setName("Test Name");
+        assertEquals("Test Name", CuT.getName(), "Test Set Recipe Name");
+        CuT.setName(null);
+        assertNotNull(CuT.getName(), "Test that null case is handled correctly");
+    }
+
+    @Test
     @DisplayName("Check Price")
     public void checkPrice() {
         assertTrue(CuT.getPrice() > -1, "Testing Recipe Price");
@@ -95,5 +104,23 @@ public class RecipeTest {
         assertEquals(100, CuT.getAmtMilk(), "Test Set Milk Amount to 100");
         assertThrows(RecipeException.class, () -> CuT.setAmtMilk("-20"));
         assertThrows(RecipeException.class, () -> CuT.setAmtMilk("test"));
+    }
+
+    @Test
+    @DisplayName("Test Set Sugar Amount")
+    public void testSetSugarAmount() {
+        CuT.setAmtSugar("100");
+        assertEquals(100, CuT.getAmtSugar(), "Test Set Sugar Amount to 100");
+        assertThrows(RecipeException.class, () -> CuT.setAmtSugar("-20"));
+        assertThrows(RecipeException.class, () -> CuT.setAmtSugar("test"));
+    }
+
+    @Test
+    @DisplayName("Test Set Chocolate Amount")
+    public void testSetChocolateAmount() {
+        CuT.setAmtChocolate("100");
+        assertEquals(100, CuT.getAmtChocolate(), "Test Set Chocolate Amount to 100");
+        assertThrows(RecipeException.class, () -> CuT.setAmtChocolate("-20"));
+        assertThrows(RecipeException.class, () -> CuT.setAmtChocolate("test"));
     }
 }
