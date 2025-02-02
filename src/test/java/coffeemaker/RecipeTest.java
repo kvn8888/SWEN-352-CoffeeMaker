@@ -35,8 +35,8 @@ public class RecipeTest {
     }
 
     @Test
-    @DisplayName("Check Name")
-    public void checkName() {
+    @DisplayName("Test Default Name")
+    public void testDefaultName() {
         assertNotNull(CuT.getName(), "Testing Recipe Name");
     }
 
@@ -50,33 +50,33 @@ public class RecipeTest {
     }
 
     @Test
-    @DisplayName("Check Price")
-    public void checkPrice() {
+    @DisplayName("Test Default Price")
+    public void checkDefaultPrice() {
         assertTrue(CuT.getPrice() > -1, "Testing Recipe Price");
     }
 
     @Test
-    @DisplayName("Check Coffee Amount")
-    public void checkCoffeeAmount() {
-        assertTrue(CuT.getAmtCoffee() > -1, "Testing Recipe Coffee Amount");
+    @DisplayName("Test Default Coffee Amount")
+    public void testDefaultCoffeeAmount() {
+        assertTrue(CuT.getAmtCoffee() > -1, "Testing Default Recipe Coffee Amount");
     }
 
     @Test
-    @DisplayName("Check Milk Amount")
-    public void checkMilkAmount() {
-        assertTrue(CuT.getAmtMilk() > -1, "Testing Recipe Milk Amount");
+    @DisplayName("Test Default Milk Amount")
+    public void testDefaultMilkAmount() {
+        assertTrue(CuT.getAmtMilk() > -1, "Testing Default Recipe Milk Amount");
     }
 
     @Test
-    @DisplayName("Check Sugar Amount")
-    public void checkSugarAmount() {
-        assertTrue(CuT.getAmtSugar() > -1, "Testing Recipe Sugar Amount");
+    @DisplayName("Test Default Sugar Amount")
+    public void testDefaultSugarAmount() {
+        assertTrue(CuT.getAmtSugar() > -1, "Testing Default Recipe Sugar Amount");
     }
 
     @Test
-    @DisplayName("Check Chocolate Amount")
-    public void checkChocolateAmount() {
-        assertTrue(CuT.getAmtChocolate() > -1, "Testing Recipe Chocolate Amount");
+    @DisplayName("Test Chocolate Amount")
+    public void ChocolateAmount() {
+        assertTrue(CuT.getAmtChocolate() > -1, "Testing Default Recipe Chocolate Amount");
     }
 
     @Test
