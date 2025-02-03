@@ -155,7 +155,31 @@ public class RecipeBookTest {
         new_recipe.setName("New recipe");
 
         CuT.addRecipe(recipe);
-        assertEquals(CuT.replaceRecipe(0, new_recipe), "");
+        assertEquals(CuT.replaceRecipe(0, new_recipe), "Recipe");
+    }
+    @Test
+    public void replaceRecipeTestNewRecipeGetName() {
+        Recipe recipe = new Recipe();
+        Recipe new_recipe = new Recipe();
+        recipe.setName("Recipe");
+        new_recipe.setName("Recipe");
+
+        CuT.addRecipe(recipe);
+        assertEquals(CuT.replaceRecipe(0, new_recipe), "Recipe");
+        assertEquals(new_recipe.getName(), "Recipe");
+    }
+    @Test
+    public void replaceRecipeTestNewRecipeThreeTimes() {
+        Recipe recipe = new Recipe();
+        Recipe recipe1 = new Recipe();
+        Recipe recipe2 = new Recipe();
+        recipe.setName("Recipe");
+        recipe1.setName("Recipe");
+        recipe2.setName("Recipe");
+
+        CuT.addRecipe(recipe);
+        assertEquals(CuT.replaceRecipe(0, recipe1), "Recipe");
+        assertEquals(CuT.replaceRecipe(0, recipe2), "Recipe");
     }
     @Test
     public void replaceRecipeTestNull() {

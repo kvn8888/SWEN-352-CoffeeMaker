@@ -111,7 +111,6 @@ public class RecipeBook {
   public String replaceRecipe(int recipeToReplace, Recipe newRecipe) {
     if (recipeArray[recipeToReplace] != null) {
       String recipeName = recipeArray[recipeToReplace].getName();
-      newRecipe.setName("");
       recipeArray[recipeToReplace] = newRecipe;
       return recipeName;
     } else {
