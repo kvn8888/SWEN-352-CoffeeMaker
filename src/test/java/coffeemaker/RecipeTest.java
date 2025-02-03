@@ -106,6 +106,12 @@ public class RecipeTest {
     }
 
     @Test
+    @DisplayName("Test Set Price to a double")
+    public void testSetPriceDouble(){
+        assertThrows(RecipeException.class, () -> CuT.setPrice("1.1"));
+    }
+
+    @Test
     @DisplayName("Test Set Coffee Amount to a Positive Number")
     public void testSetCoffeeAmountPosNum() {
         CuT.setAmtCoffee("100");
@@ -125,6 +131,12 @@ public class RecipeTest {
     }
 
     @Test
+    @DisplayName("Test Set Coffee Amount to a double")
+    public void testSetCoffeeDouble(){
+        assertThrows(RecipeException.class, () -> CuT.setAmtCoffee("1.1"));
+    }
+
+    @Test
     @DisplayName("Test Set Milk Amount to a Positive Number")
     public void testSetMilkAmountPosNUm() {
         CuT.setAmtMilk("100");
@@ -141,6 +153,12 @@ public class RecipeTest {
     @DisplayName("Test Set Milk Amount to a non number")
     public void testSetMilkAmountNaN(){
         assertThrows(RecipeException.class, () -> CuT.setAmtMilk("NaN"));
+    }
+
+    @Test
+    @DisplayName("Test Set Milk Amount to a double")
+    public void testSetMilkDouble(){
+        assertThrows(RecipeException.class, () -> CuT.setAmtMilk("1.1"));
     }
 
 
@@ -164,6 +182,12 @@ public class RecipeTest {
     }
 
     @Test
+    @DisplayName("Test Set Sugar Amount to a double")
+    public void testSetSugarDouble(){
+        assertThrows(RecipeException.class, () -> CuT.setAmtSugar("1.1"));
+    }
+
+    @Test
     @DisplayName("Test Set Chocolate Amount to a Positive Number")
     public void testSetChocolateAmountPosNum() {
         CuT.setAmtChocolate("100");
@@ -180,6 +204,12 @@ public class RecipeTest {
     @DisplayName("Test Set Chocolate Amount to a non number")
     public void testSetChocolateAmountNaN() {
         assertThrows(RecipeException.class, () -> CuT.setAmtChocolate("test"));
+    }
+
+    @Test
+    @DisplayName("Test Set Chocolate Amount to a double")
+    public void testSetChocolateDouble(){
+        assertThrows(RecipeException.class, () -> CuT.setAmtChocolate("1.1"));
     }
 
     @Test
