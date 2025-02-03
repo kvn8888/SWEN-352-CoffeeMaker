@@ -129,4 +129,14 @@ public class RecipeTest {
     public void testToString() {
         assertNotNull(CuT.toString(), "Testing Recipe toString");
     }
+
+    @Test
+    @DisplayName("Test Hash Code")
+    public void testHashCode() {
+        String testName = "This is a test name";
+        int expected =  testName.hashCode();
+        CuT.setName(testName);
+        assertEquals(expected, CuT.hashCode(), "Test Hash Code");
+    }
+
 }
