@@ -57,6 +57,13 @@ public class RecipeBookTest {
         Recipe recipe1 = new Recipe();
         Recipe recipe2 = new Recipe();
 
+        /*
+         * NOTE: test fails if we don't assign names!
+         */
+
+        recipe1.setName("recipe1");
+        recipe2.setName("recipe2");
+
         assertTrue(CuT.addRecipe(recipe1));
         assertTrue(CuT.addRecipe(recipe2));
         // assertTrue(CuT.addRecipe(recipe2));
@@ -72,6 +79,12 @@ public class RecipeBookTest {
         Recipe recipe3 = new Recipe();
         Recipe recipe4 = new Recipe();
         Recipe recipe5 = new Recipe();
+
+        recipe1.setName("recipe1");
+        recipe2.setName("recipe2");
+        recipe3.setName("recipe3");
+        recipe4.setName("recipe4");
+        recipe5.setName("recipe5");
 
         assertTrue(CuT.addRecipe(recipe1));
         assertTrue(CuT.addRecipe(recipe2));
@@ -98,13 +111,33 @@ public class RecipeBookTest {
         assertEquals(CuT.deleteRecipe(0), "Recipe1");
 
         assertTrue(CuT.addRecipe(recipe1));
-        assertNotEquals(CuT.deleteRecipe(0), "recipe1");
+        assertEquals(CuT.deleteRecipe(1), "Recipe1");
+        assertTrue(CuT.addRecipe(recipe1));
+        assertNotEquals(CuT.deleteRecipe(0), "Recipe1");
+    }
+    @Test
+    public void deleteRecipeTestIndex0() {
+        Recipe recipe1 = new Recipe();
+        recipe1.setName("Recipe1");
         assertTrue(CuT.addRecipe(recipe1));
         assertEquals(CuT.deleteRecipe(0), "Recipe1");
 
-        assertNotEquals(CuT.deleteRecipe(1), "Recipe1");
-        assertNotEquals(CuT.deleteRecipe(2), "Recipe1");
-        assertNotEquals(CuT.deleteRecipe(3), "Recipe1");
+        assertTrue(CuT.addRecipe(recipe1));
+        assertEquals(CuT.deleteRecipe(1), "Recipe1");
+        assertTrue(CuT.addRecipe(recipe1));
+        assertNotEquals(CuT.deleteRecipe(0), "Recipe1");
+
+    }
+    @Test
+    public void deleteRecipeTestLowercase() {
+        Recipe recipe1 = new Recipe();
+        recipe1.setName("Recipe1");
+        assertTrue(CuT.addRecipe(recipe1));
+        assertEquals(CuT.deleteRecipe(0), "Recipe1");
+
+        assertTrue(CuT.addRecipe(recipe1));
+        assertNotEquals(CuT.deleteRecipe(1), "recipe1");
+
     }
     @Test
     public void deleteRecipeTestNull() {
