@@ -209,7 +209,14 @@ public class InventoryTest {
 
         recipe.setAmtCoffee("20");
         assertFalse(inventory.useIngredients(recipe), "Should return false if ingredients are insufficient");
+        recipe.setAmtMilk("20");
+        assertFalse(inventory.useIngredients(recipe), "Should return false if ingredients are insufficient");
+        recipe.setAmtSugar("20");
+        assertFalse(inventory.useIngredients(recipe), "Should return false if ingredients are insufficient");
+        recipe.setAmtChocolate("20");
+        assertFalse(inventory.useIngredients(recipe), "Should return false if ingredients are insufficient");
     }
+
 
 
 
