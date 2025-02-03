@@ -139,4 +139,33 @@ public class RecipeTest {
         assertEquals(expected, CuT.hashCode(), "Test Hash Code");
     }
 
+    @Test
+    @DisplayName("Test Recipe Equals Self")
+    public void testEqualsSelf(){
+        assertTrue(CuT.equals(CuT), "Test Recipe Equals Self");
+    }
+
+    @Test
+    @DisplayName("Test Null Returns False")
+    public void testNullReturnFalse(){
+        assertFalse(CuT.equals(null), "Test Null Returns False");
+    }
+
+    @Test
+    @DisplayName("Test Equal Class Type")
+    public void testEqualClassType(){
+        String testString = "foo";
+        assertFalse(CuT.equals(testString), "Test two objects of different types return false equality");
+    }
+
+    @Test
+    @DisplayName("Test Equality with Recipe name")
+    public void testEqualityWithRecipeName(){
+        CuT.setName("Recipe1");
+        Recipe CuT2 = new Recipe();
+        CuT2.setName(CuT.getName());
+
+        assertTrue(CuT.equals(CuT2));
+    }
+
 }
