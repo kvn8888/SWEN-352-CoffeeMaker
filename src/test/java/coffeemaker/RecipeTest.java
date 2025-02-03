@@ -41,10 +41,17 @@ public class RecipeTest {
     }
 
     @Test
-    @DisplayName("Test Set Name")
-    public void testSetName() {
+    @DisplayName("Test Set Name to String")
+    public void testSetNameString() {
         CuT.setName("Test Name");
-        assertEquals("Test Name", CuT.getName(), "Test Set Recipe Name");
+        assertEquals("Test Name", CuT.getName(), "Test Set Recipe Name to String");
+        CuT.setName(null);
+        assertNotNull(CuT.getName(), "Test that null case is handled correctly");
+    }
+
+    @Test
+    @DisplayName("Test Set Name to Null")
+    public void testSetNameStringNull() {
         CuT.setName(null);
         assertNotNull(CuT.getName(), "Test that null case is handled correctly");
     }
@@ -80,47 +87,98 @@ public class RecipeTest {
     }
 
     @Test
-    @DisplayName("Test Set Price")
-    public void testSetPrice() {
+    @DisplayName("Test Set Price to a positive Number")
+    public void testSetPricePosNum() {
         CuT.setPrice("1");
         assertEquals(1, CuT.getPrice(), "Test Set Price to 1");
-        assertThrows(RecipeException.class, () -> CuT.setPrice("-1"));
-        assertThrows(RecipeException.class, () -> CuT.setPrice("test"));
     }
 
     @Test
-    @DisplayName("Test Set Coffee Amount")
-    public void testSetCoffeeAmount() {
+    @DisplayName("Test Set Price to a Negative Number")
+    public void testSetPriceNegNum(){
+        assertThrows(RecipeException.class, () -> CuT.setPrice("-1"));
+    }
+
+    @Test
+    @DisplayName("Test Set Price to a non number")
+    public void testSetPriceNaN(){
+        assertThrows(RecipeException.class, () -> CuT.setPrice("NaN"));
+    }
+
+    @Test
+    @DisplayName("Test Set Coffee Amount to a Positive Number")
+    public void testSetCoffeeAmountPosNum() {
         CuT.setAmtCoffee("100");
         assertEquals(100, CuT.getAmtCoffee(), "Test Set Coffee Amount to 100");
-        assertThrows(RecipeException.class, () -> CuT.setAmtCoffee("-20"));
-        assertThrows(RecipeException.class, () -> CuT.setAmtCoffee("test"));
     }
 
     @Test
-    @DisplayName("Test Set Milk Amount")
-    public void testSetMilkAmount() {
+    @DisplayName("Test Set Coffee Amount to Negative Number")
+    public void testSetCoffeeAmountNegNum(){
+        assertThrows(RecipeException.class, () -> CuT.setAmtCoffee("-20"));
+    }
+
+    @Test
+    @DisplayName("Test Set Coffee Amount to a non number")
+    public void testSetCoffeeAmountNaN(){
+        assertThrows(RecipeException.class, () -> CuT.setAmtCoffee("NaN"));
+    }
+
+    @Test
+    @DisplayName("Test Set Milk Amount to a Positive Number")
+    public void testSetMilkAmountPosNUm() {
         CuT.setAmtMilk("100");
         assertEquals(100, CuT.getAmtMilk(), "Test Set Milk Amount to 100");
-        assertThrows(RecipeException.class, () -> CuT.setAmtMilk("-20"));
-        assertThrows(RecipeException.class, () -> CuT.setAmtMilk("test"));
     }
 
     @Test
-    @DisplayName("Test Set Sugar Amount")
-    public void testSetSugarAmount() {
+    @DisplayName("Test Set Milk Amount to a Negative Number")
+    public void testSetMilkAmountNegNum(){
+        assertThrows(RecipeException.class, () -> CuT.setAmtMilk("-20"));
+    }
+
+    @Test
+    @DisplayName("Test Set Milk Amount to a non number")
+    public void testSetMilkAmountNaN(){
+        assertThrows(RecipeException.class, () -> CuT.setAmtMilk("NaN"));
+    }
+
+
+    @Test
+    @DisplayName("Test Set Sugar Amount to a Positive Number")
+    public void testSetSugarAmountPosNum() {
         CuT.setAmtSugar("100");
         assertEquals(100, CuT.getAmtSugar(), "Test Set Sugar Amount to 100");
+    }
+
+    @Test
+    @DisplayName("Test Set Sugar Amount to a Negative Number")
+    public void testSetSugarAmountNegNum() {
         assertThrows(RecipeException.class, () -> CuT.setAmtSugar("-20"));
+    }
+
+    @Test
+    @DisplayName("Test Set Sugar Amount to a non number")
+    public void testSetSugarAmountNaN() {
         assertThrows(RecipeException.class, () -> CuT.setAmtSugar("test"));
     }
 
     @Test
-    @DisplayName("Test Set Chocolate Amount")
-    public void testSetChocolateAmount() {
+    @DisplayName("Test Set Chocolate Amount to a Positive Number")
+    public void testSetChocolateAmountPosNum() {
         CuT.setAmtChocolate("100");
         assertEquals(100, CuT.getAmtChocolate(), "Test Set Chocolate Amount to 100");
+    }
+
+    @Test
+    @DisplayName("Test Set Chocolate Amount to a Negative Number")
+    public void testSetChocolateAmountNegNum() {
         assertThrows(RecipeException.class, () -> CuT.setAmtChocolate("-20"));
+    }
+
+    @Test
+    @DisplayName("Test Set Chocolate Amount to a non number")
+    public void testSetChocolateAmountNaN() {
         assertThrows(RecipeException.class, () -> CuT.setAmtChocolate("test"));
     }
 
