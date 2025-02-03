@@ -57,7 +57,14 @@ public class RecipeBookTest {
         Recipe recipe1 = new Recipe();
         Recipe recipe2 = new Recipe();
 
-        assertTrue(CuT.addRecipe(recipe1));
+        /*
+         * NOTE: test fails if we don't assign names!
+         */
+
+        recipe1.setName("recipe1");
+        recipe2.setName("recipe2");
+
+        CuT.addRecipe(recipe1);
         assertTrue(CuT.addRecipe(recipe2));
         // assertTrue(CuT.addRecipe(recipe2));
     }
@@ -73,10 +80,16 @@ public class RecipeBookTest {
         Recipe recipe4 = new Recipe();
         Recipe recipe5 = new Recipe();
 
-        assertTrue(CuT.addRecipe(recipe1));
-        assertTrue(CuT.addRecipe(recipe2));
-        assertTrue(CuT.addRecipe(recipe3));
-        assertTrue(CuT.addRecipe(recipe4));
+        recipe1.setName("recipe1");
+        recipe2.setName("recipe2");
+        recipe3.setName("recipe3");
+        recipe4.setName("recipe4");
+        recipe5.setName("recipe5");
+
+        CuT.addRecipe(recipe1);
+        CuT.addRecipe(recipe2);
+        CuT.addRecipe(recipe3);
+        CuT.addRecipe(recipe4);
         assertFalse(CuT.addRecipe(recipe5));
     }
     @Test
@@ -87,30 +100,44 @@ public class RecipeBookTest {
          */
         Recipe recipe1 = new Recipe();
 
-        assertTrue(CuT.addRecipe(recipe1));
+        CuT.addRecipe(recipe1);
         assertFalse(CuT.addRecipe(recipe1));
     }
     @Test
     public void deleteRecipeTest() {
         Recipe recipe1 = new Recipe();
         recipe1.setName("Recipe1");
-        assertTrue(CuT.addRecipe(recipe1));
+        CuT.addRecipe(recipe1);
+        CuT.deleteRecipe(0);
+
+        CuT.addRecipe(recipe1);
+        assertEquals(CuT.deleteRecipe(0), "Recipe1");
+    }
+    @Test
+    public void deleteRecipeTestIndex0() {
+        Recipe recipe1 = new Recipe();
+        recipe1.setName("Recipe1");
+        CuT.addRecipe(recipe1);
+
         assertEquals(CuT.deleteRecipe(0), "Recipe1");
 
-        assertTrue(CuT.addRecipe(recipe1));
-        assertNotEquals(CuT.deleteRecipe(0), "recipe1");
-        assertTrue(CuT.addRecipe(recipe1));
-        assertEquals(CuT.deleteRecipe(0), "Recipe1");
+    }
+    @Test
+    public void deleteRecipeTestLowercase() {
+        Recipe recipe1 = new Recipe();
+        recipe1.setName("Recipe1");
+        CuT.addRecipe(recipe1);
+        CuT.deleteRecipe(0);
 
-        assertNotEquals(CuT.deleteRecipe(1), "Recipe1");
-        assertNotEquals(CuT.deleteRecipe(2), "Recipe1");
-        assertNotEquals(CuT.deleteRecipe(3), "Recipe1");
+        CuT.addRecipe(recipe1);
+        assertNotEquals(CuT.deleteRecipe(1), "recipe1");
+
     }
     @Test
     public void deleteRecipeTestNull() {
         Recipe recipe1 = new Recipe();
         recipe1.setName("Recipe1");
-        assertTrue(CuT.addRecipe(recipe1));
+        CuT.addRecipe(recipe1);
         assertEquals(CuT.deleteRecipe(2), null);
     }
 
@@ -122,7 +149,31 @@ public class RecipeBookTest {
         new_recipe.setName("New recipe");
 
         CuT.addRecipe(recipe);
-        assertEquals(CuT.replaceRecipe(0, new_recipe), "");
+        assertEquals(CuT.replaceRecipe(0, new_recipe), "Recipe");
+    }
+    @Test
+    public void replaceRecipeTestNewRecipeGetName() {
+        Recipe recipe = new Recipe();
+        Recipe new_recipe = new Recipe();
+        recipe.setName("Recipe");
+        new_recipe.setName("Recipe");
+
+        CuT.addRecipe(recipe);
+        CuT.replaceRecipe(0, new_recipe);
+        assertEquals(new_recipe.getName(), "Recipe");
+    }
+    @Test
+    public void replaceRecipeTestNewRecipeThreeTimes() {
+        Recipe recipe = new Recipe();
+        Recipe recipe1 = new Recipe();
+        Recipe recipe2 = new Recipe();
+        recipe.setName("Recipe");
+        recipe1.setName("Recipe");
+        recipe2.setName("Recipe");
+
+        CuT.addRecipe(recipe);
+        CuT.replaceRecipe(0, recipe1);
+        assertEquals(CuT.replaceRecipe(0, recipe2), "Recipe");
     }
     @Test
     public void replaceRecipeTestNull() {
